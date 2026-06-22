@@ -1,0 +1,97 @@
+<!-- @dsCard group="Karting Site" viewport="1280x760" name="Torque X Karting Circuit — Homepage" subtitle="Conversion-first karting sales platform: hero, booking, membership, corporate, leads" -->
+<!-- @startingPoint section="Karting" subtitle="Conversion-first karting homepage" viewport="1280x760" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Torque X Karting Circuit — Pakistan's Ultimate Go-Kart Racing Experience</title>
+  <meta name="description" content="Book go-kart racing online, buy memberships, and host corporate events at Torque X Karting Circuit — Pakistan's premium motorsport venue.">
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    html, body { margin: 0; background: var(--color-canvas); scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    ::selection { background: var(--color-primary); color: #fff; }
+    .knav { position: sticky; top: 0; z-index: 40; }
+    a { color: inherit; }
+    .wa { position: fixed; right: 20px; bottom: 20px; z-index: 60; height: 56px; padding: 0 22px;
+      display: inline-flex; align-items: center; gap: 10px; background: #1f8a3b; color: #fff;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; text-decoration: none; border-radius: var(--radius-full);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4); cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel" src="sections-a.jsx"></script>
+  <script type="text/babel" src="sections-b.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+    const { Button, Badge } = window.TorqueXDesignSystem_1604c3;
+
+    function PromoBar() {
+      return (
+        <div style={{ background: "var(--color-primary)", color: "#fff", fontFamily: "var(--font-sans)", fontSize: 12.5, fontWeight: 600, letterSpacing: "0.4px", textAlign: "center", padding: "9px 16px" }}>
+          ⚑ Season opener — <strong>20% off all race packages</strong> &amp; free gear hire until June 30. Use code <strong>GRID26</strong>.
+        </div>
+      );
+    }
+
+    function Nav({ onBook, go }) {
+      const links = [["Services", "services"], ["Book", "book"], ["Membership", "membership"], ["Corporate", "corporate"], ["Contact", "contact"]];
+      return (
+        <nav style={{ height: 64, background: "var(--color-canvas)", borderBottom: "1px solid var(--color-hairline)", display: "flex", alignItems: "center", gap: "var(--space-xl)", padding: "0 var(--space-md)", fontFamily: "var(--font-sans)" }}>
+          <img src="../../assets/logo-wordmark.svg" alt="Torque X Karting Circuit" style={{ height: 26, flex: "none", cursor: "pointer" }} onClick={() => go("top")} />
+          <ul style={{ display: "flex", gap: "var(--space-md)", listStyle: "none", margin: 0, padding: 0, flex: 1 }}>
+            {links.map(([l, id]) => (
+              <li key={l}><a href={"#" + id} onClick={(e) => { e.preventDefault(); go(id); }} style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.65px", textTransform: "uppercase", color: "var(--color-ink)", textDecoration: "none", padding: "8px 0" }}>{l}</a></li>
+            ))}
+          </ul>
+          <div style={{ display: "flex", alignItems: "center", gap: "var(--space-sm)", flex: "none" }}>
+            <span style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.65px", textTransform: "uppercase", color: "var(--color-body)", cursor: "pointer" }} onClick={() => go("membership")}>Members</span>
+            <Button onClick={onBook} style={{ height: 40, padding: "0 22px" }}>Book your race</Button>
+          </div>
+        </nav>
+      );
+    }
+
+    function App() {
+      const [preset, setPreset] = useState(null);
+      const go = (id) => {
+        if (id === "top") return window.scrollTo({ top: 0, behavior: "smooth" });
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: "smooth" });
+      };
+      const bookService = (svc) => {
+        const map = { "Arrive & Drive": "Arrive & Drive", "Professional Kart Racing": "Professional Racing", "Corporate Events": "Corporate Event", "Private Track Rental": "Private Track Rental", "Racing Academy": "Racing Academy" };
+        setPreset(map[svc] || null);
+        go("book");
+      };
+      return (
+        <div id="top">
+          <PromoBar />
+          <div className="knav"><Nav onBook={() => go("book")} go={go} /></div>
+          <window.KHero onBook={() => go("book")} onJoin={() => go("membership")} />
+          <window.KStatsStrip />
+          <window.KWhyChoose />
+          <div id="services"><window.KServices onBook={bookService} /></div>
+          <window.KBookingWidget presetService={preset} />
+          <window.KMembership onJoin={() => go("contact")} />
+          <window.KCorporateBand onInquire={() => go("contact")} />
+          <window.KSocialProof />
+          <window.KLeadGen />
+          <window.KNewsletter />
+          <window.KFooter />
+          <a className="wa" href="#book" onClick={(e) => { e.preventDefault(); go("book"); }}>WhatsApp booking</a>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

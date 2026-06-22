@@ -1,0 +1,106 @@
+<!-- @dsCard group="Marketing Site" viewport="1280x720" name="Torque X — Marketing Website" subtitle="Cinematic editorial site: hero, range, F1, preowned" -->
+<!-- @startingPoint section="Marketing" subtitle="Full cinematic editorial homepage" viewport="1280x720" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Torque X</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <style>
+    html, body { margin: 0; background: var(--color-canvas); }
+    * { box-sizing: border-box; }
+    ::selection { background: var(--color-primary); color: #fff; }
+    .stickynav { position: sticky; top: 0; z-index: 20; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel" src="parts.jsx"></script>
+  <script type="text/babel">
+    const { useState } = React;
+
+    function HomeScreen() {
+      return (
+        <>
+          <TXHero
+            eyebrow="Berlinetta · V12"
+            title="812 Competizione"
+            sub="The most powerful naturally-aspirated V12 ever fitted to a road-going Torque X."
+            primary="Configure"
+            secondary="Discover"
+          />
+          <TXSpecStrip />
+          <TXRangeGrid />
+          <TXLiveryBand />
+          <TXCtaBand />
+        </>
+      );
+    }
+
+    function ModelsScreen() {
+      return (
+        <>
+          <TXHero eyebrow="The Range" title="The full range" sub="Twelve cylinders, six, or hybrid. Every Torque X, in one place." primary="Compare models" secondary="Book a test drive" />
+          <TXRangeGrid />
+          <TXLiveryBand />
+        </>
+      );
+    }
+
+    function F1Screen() {
+      return (
+        <>
+          <TXHero eyebrow="Formula 1" title="Scuderia Torque X" sub="Racing is in our blood — and on every road car we build." primary="2026 calendar" secondary="Meet the drivers" />
+          <TXF1Section />
+        </>
+      );
+    }
+
+    function PreownedScreen() {
+      return (
+        <>
+          <TXHero eyebrow="Preowned" title="Torque X Approved" sub="Certified preowned, inspected and warrantied by the factory." primary="Browse inventory" secondary="Find a dealer" />
+          <TXPreownedSection />
+        </>
+      );
+    }
+
+    const SCREENS = {
+      "Models": ModelsScreen,
+      "Formula 1": F1Screen,
+      "Preowned": PreownedScreen,
+    };
+
+    function App() {
+      const [screen, setScreen] = useState("Home");
+      const theme = screen === "Preowned" ? "dark" : "dark";
+      const Active = screen === "Home" ? HomeScreen : (SCREENS[screen] || HomeScreen);
+      const handle = (label) => {
+        if (label === "Lifestyle" || label === "Owners") { setScreen("Home"); }
+        else setScreen(label);
+        window.scrollTo(0, 0);
+      };
+      return (
+        <div>
+          <div className="stickynav">
+            <TXTopNav
+              active={screen === "Home" ? "Models" : screen}
+              logoSrc="../../assets/logo-wordmark.svg"
+              onSelect={handle}
+            />
+          </div>
+          <Active />
+          <TXFooter />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

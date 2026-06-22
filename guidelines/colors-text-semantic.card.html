@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Text & Semantic" subtitle="On-dark text ramp plus info / success / warning" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;background:var(--color-canvas);font-family:var(--font-sans);padding:24px;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;}
+  .col{display:flex;flex-direction:column;gap:8px;}
+  .row{display:flex;align-items:center;gap:10px;}
+  .dot{width:16px;height:16px;border:1px solid var(--color-hairline);}
+  .t{font-size:13px;color:#fff;}
+  .h{font-size:11px;color:#666;}
+</style></head>
+<body>
+  <div class="col">
+    <div class="row"><span style="font-size:15px;color:var(--color-ink);font-weight:600">Ink / Body Strong</span><span class="h">#ffffff</span></div>
+    <div class="row"><span style="font-size:15px;color:var(--color-body)">Body</span><span class="h">#969696</span></div>
+    <div class="row"><span style="font-size:15px;color:var(--color-muted)">Muted</span><span class="h">#666666</span></div>
+    <div class="row"><span style="font-size:15px;color:var(--color-muted-soft)">Muted Soft</span><span class="h">#8f8f8f</span></div>
+  </div>
+  <div class="col">
+    <div class="row"><span class="dot" style="background:var(--color-info)"></span><span class="t">Info</span><span class="h">#4c98b9</span></div>
+    <div class="row"><span class="dot" style="background:var(--color-success)"></span><span class="t">Success</span><span class="h">#03904a</span></div>
+    <div class="row"><span class="dot" style="background:var(--color-warning)"></span><span class="t">Warning</span><span class="h">#f13a2c</span></div>
+  </div>
+</body></html>

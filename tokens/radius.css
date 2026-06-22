@@ -1,0 +1,24 @@
+/* ============================================================
+   Torque X — Radius & elevation tokens
+   Sharp by default. 0px is the brand button/card/band shape.
+   Photographic depth + brightness-step elevation; one shadow tier only.
+   ============================================================ */
+
+:root {
+  /* Border radius — sharp by default */
+  --radius-none: 0px;   /* every CTA, card, band — dominant radius */
+  --radius-xs: 2px;     /* tight badges (rare) */
+  --radius-sm: 4px;     /* form inputs */
+  --radius-md: 6px;     /* compact cards (rare) */
+  --radius-lg: 8px;     /* mobile-only collapse cards */
+  --radius-xl: 12px;    /* modal / dialog (rare) */
+  --radius-full: 9999px;/* avatar plates, badge pills */
+
+  /* Elevation — single soft drop tier (hovered cards only). */
+  --shadow-small: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Borders */
+  --border-hairline: 1px solid var(--color-hairline);
+  --border-hairline-on-light: 1px solid var(--color-hairline-on-light);
+  --border-hairline-soft: 1px solid var(--color-hairline-soft);
+}

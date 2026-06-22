@@ -1,0 +1,18 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Radius scale" subtitle="Sharp 0px by default; pill reserved for badges only" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;background:var(--color-canvas);font-family:var(--font-sans);padding:28px 24px;color:var(--color-ink);display:flex;gap:20px;flex-wrap:wrap;}
+  .item{display:flex;flex-direction:column;align-items:center;gap:8px;}
+  .box{width:72px;height:72px;background:var(--color-canvas-elevated);border:1px solid var(--color-hairline);}
+  .l{font-size:11px;color:var(--color-body);}
+  .l b{color:#fff;font-weight:600;}
+</style></head>
+<body>
+  <div class="item"><div class="box" style="border-radius:var(--radius-none);border-color:var(--color-primary)"></div><div class="l"><b>none</b> · 0</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-xs)"></div><div class="l"><b>xs</b> · 2</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-sm)"></div><div class="l"><b>sm</b> · 4</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-md)"></div><div class="l"><b>md</b> · 6</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-lg)"></div><div class="l"><b>lg</b> · 8</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-xl)"></div><div class="l"><b>xl</b> · 12</div></div>
+  <div class="item"><div class="box" style="border-radius:var(--radius-full)"></div><div class="l"><b>full</b> · pill</div></div>
+</body></html>

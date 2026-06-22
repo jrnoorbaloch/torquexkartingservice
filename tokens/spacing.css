@@ -1,0 +1,19 @@
+/* ============================================================
+   Torque X — Spacing tokens
+   Base unit 4px. Explicit named 8px ladder (xxxs → super).
+   ============================================================ */
+
+:root {
+  --space-xxxs: 4px;
+  --space-xxs: 8px;
+  --space-xs: 16px;
+  --space-sm: 24px;
+  --space-md: 32px;
+  --space-lg: 48px;
+  --space-xl: 64px;
+  --space-xxl: 96px;   /* major band padding */
+  --space-super: 128px;/* hero band depth */
+
+  /* Layout */
+  --container-max: 1280px;  /* editorial body cap */
+}

@@ -1,0 +1,124 @@
+/* ============================================================
+   Torque X — Typography tokens
+   Single sans family. Display weight stays at 500 (never bold).
+   Negative tracking on display only. Uppercase + tracking on CTA/nav.
+   ============================================================ */
+
+:root {
+  /* Family — FerrariSans is licensed; Inter is the documented substitute. */
+  --font-sans: "Inter", -apple-system, system-ui, sans-serif;
+
+  /* Weights */
+  --weight-body: 400;
+  --weight-display: 500;   /* display NEVER bolder than 500 */
+  --weight-label: 600;
+  --weight-bold: 700;      /* component titles, CTA labels, number-display */
+
+  /* --- Type scale: size / line-height / letter-spacing / weight ---
+     Apply as a set. Negative tracking lives on display sizes only. */
+
+  --display-mega-size: 80px;            /* @kind font */
+  --display-mega-line: 1.05;            /* @kind font */
+  --display-mega-track: -1.6px;         /* @kind font */
+
+  --display-xl-size: 56px;              /* @kind font */
+  --display-xl-line: 1.1;               /* @kind font */
+  --display-xl-track: -1.12px;          /* @kind font */
+
+  --display-lg-size: 36px;              /* @kind font */
+  --display-lg-line: 1.2;               /* @kind font */
+  --display-lg-track: -0.36px;          /* @kind font */
+
+  --display-md-size: 26px;              /* @kind font */
+  --display-md-line: 1.5;               /* @kind font */
+  --display-md-track: 0.195px;          /* @kind font */
+
+  --title-md-size: 18px;                /* @kind font */
+  --title-md-line: 1.2;                 /* @kind font */
+  --title-md-track: 0;                  /* @kind font */
+
+  --title-sm-size: 16px;                /* @kind font */
+  --title-sm-line: 1.4;                 /* @kind font */
+  --title-sm-track: 0.08px;             /* @kind font */
+
+  --body-md-size: 14px;                 /* @kind font */
+  --body-md-line: 1.5;                  /* @kind font */
+  --body-md-track: 0;                   /* @kind font */
+
+  --body-sm-size: 13px;                 /* @kind font */
+  --body-sm-line: 1.5;                  /* @kind font */
+  --body-sm-track: 0;                   /* @kind font */
+
+  --caption-size: 12px;                 /* @kind font */
+  --caption-line: 1.4;                  /* @kind font */
+  --caption-track: 0;                   /* @kind font */
+
+  --caption-uppercase-size: 11px;       /* @kind font */
+  --caption-uppercase-line: 1.4;        /* @kind font */
+  --caption-uppercase-track: 1.1px;     /* @kind font */
+
+  --button-size: 14px;                  /* @kind font */
+  --button-line: 1.0;                   /* @kind font */
+  --button-track: 1.4px;                /* @kind font */  /* uppercase */
+
+  --nav-link-size: 13px;                /* @kind font */
+  --nav-link-line: 1.4;                 /* @kind font */
+  --nav-link-track: 0.65px;             /* @kind font */  /* uppercase */
+
+  --number-display-size: 80px;          /* @kind font */
+  --number-display-line: 1.0;           /* @kind font */
+  --number-display-track: -1.6px;       /* @kind font */
+}
+
+/* ---- Optional utility classes (consumers may use the vars directly) ---- */
+.tx-display-mega {
+  font: var(--weight-display) var(--display-mega-size)/var(--display-mega-line) var(--font-sans);
+  letter-spacing: var(--display-mega-track);
+}
+.tx-display-xl {
+  font: var(--weight-display) var(--display-xl-size)/var(--display-xl-line) var(--font-sans);
+  letter-spacing: var(--display-xl-track);
+}
+.tx-display-lg {
+  font: var(--weight-display) var(--display-lg-size)/var(--display-lg-line) var(--font-sans);
+  letter-spacing: var(--display-lg-track);
+}
+.tx-display-md {
+  font: var(--weight-display) var(--display-md-size)/var(--display-md-line) var(--font-sans);
+  letter-spacing: var(--display-md-track);
+}
+.tx-title-md {
+  font: var(--weight-bold) var(--title-md-size)/var(--title-md-line) var(--font-sans);
+}
+.tx-title-sm {
+  font: var(--weight-display) var(--title-sm-size)/var(--title-sm-line) var(--font-sans);
+  letter-spacing: var(--title-sm-track);
+}
+.tx-body-md {
+  font: var(--weight-body) var(--body-md-size)/var(--body-md-line) var(--font-sans);
+}
+.tx-body-sm {
+  font: var(--weight-body) var(--body-sm-size)/var(--body-sm-line) var(--font-sans);
+}
+.tx-caption {
+  font: var(--weight-body) var(--caption-size)/var(--caption-line) var(--font-sans);
+}
+.tx-caption-uppercase {
+  font: var(--weight-label) var(--caption-uppercase-size)/var(--caption-uppercase-line) var(--font-sans);
+  letter-spacing: var(--caption-uppercase-track);
+  text-transform: uppercase;
+}
+.tx-button {
+  font: var(--weight-bold) var(--button-size)/var(--button-line) var(--font-sans);
+  letter-spacing: var(--button-track);
+  text-transform: uppercase;
+}
+.tx-nav-link {
+  font: var(--weight-label) var(--nav-link-size)/var(--nav-link-line) var(--font-sans);
+  letter-spacing: var(--nav-link-track);
+  text-transform: uppercase;
+}
+.tx-number-display {
+  font: var(--weight-bold) var(--number-display-size)/var(--number-display-line) var(--font-sans);
+  letter-spacing: var(--number-display-track);
+}
